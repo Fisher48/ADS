@@ -28,6 +28,8 @@ public class LinkedListTest {
         s_list.addInTail(new Node(12));
         s_list.addInTail(new Node(1));
         s_list.removeAll(1);
+        ArrayList<Node> nodes = new ArrayList<>();
+        assertEquals(nodes,s_list.findAll(1));
     }
 
     @Test
@@ -39,7 +41,10 @@ public class LinkedListTest {
         s_list.addInTail(new Node(10));
         s_list.addInTail(new Node(11));
         s_list.addInTail(new Node(111));
-        assertEquals(s_list.findAll(10),s_list.findAll(10));
+        ArrayList<Node> foundNodes = new ArrayList<>();
+        foundNodes.add(s_list.head);
+        foundNodes.add(s_list.head.next.next.next);
+        assertTrue(foundNodes.containsAll(s_list.findAll(10)));
     }
 
     @Test
@@ -74,6 +79,24 @@ public class LinkedListTest {
             s_list.addInTail(new Node(rand.nextInt(100) + 1));
         }
         assertEquals(s_list.count(),s_list.count());
+        LinkedList s1 = new LinkedList();
+        assertEquals(0,s1.count());
     }
 
+    @Test
+    public void SumTest() {
+        LinkedList s1 = new LinkedList();
+        LinkedList s2 = new LinkedList();
+        s1.addInTail(new Node(1));s1.addInTail(new Node(5));s1.addInTail(new Node(10));
+        s2.addInTail(new Node(5));s2.addInTail(new Node(10));s2.addInTail(new Node(1));
+        List<Integer> list = new ArrayList(); list.add(6);list.add(15);list.add(11);
+        assertEquals(list,LinkedList.sum(s1,s2));
+    }
+
+    @Test
+    public void EmptyTest() {
+        LinkedList s_list = new LinkedList();
+        assertEquals(false,s_list.remove(11));
+        assertEquals(0,s_list.count());
+    }
 }
