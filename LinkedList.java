@@ -72,24 +72,27 @@ public class LinkedList {
 
     public void removeAll(int _value) {
         // здесь будет ваш код удаления всех узлов по заданному значению
-        Node prev = null;
-        Node curr = this.head;
-        while (curr != null) {
-            if (curr.value == _value) {
-                if (prev != null) {
-                    remove(_value);
-                    if (curr.next == null) {
-                        this.tail = prev;
-                    }
-                } else {
-                    this.head = head.next;
-                    if (head == null) {
-                        tail = null;
-                    }
+        // Некорректное удаление нескольких элементов разом при удалении из хвоста
+        Node node1 = find(_value);
+        while (node1 != null) {
+            if (node1 == this.head) {
+                this.head = node1.next;
+                if (this.head == null) {
+                    this.tail = null;
                 }
             }
-            prev = curr;
-            curr = curr.next;
+            Node node = this.head;
+            while (node != null) {
+                if (node.next == node1) {
+                    node.next = node1.next;
+                    if (this.tail == node1) {
+                        this.tail = node;
+
+                    }
+                }
+                node = node.next;
+            }
+            node1 = find(_value);
         }
     }
 
@@ -119,12 +122,12 @@ public class LinkedList {
             head = _nodeToInsert;
             _nodeToInsert.next = node;
         }
+        if (this.tail == _nodeAfter) {
+            _nodeAfter.next = _nodeToInsert;
+            this.tail = _nodeToInsert;
+            return;
+        }
         while (node.next != null) {
-            if (this.tail == _nodeAfter) {
-                _nodeAfter.next = _nodeToInsert;
-                this.tail = _nodeToInsert;
-                return;
-            }
             if (node == _nodeAfter) {
                 node = _nodeAfter.next;
                 _nodeAfter.next = _nodeToInsert;
