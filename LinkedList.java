@@ -72,33 +72,24 @@ public class LinkedList {
 
     public void removeAll(int _value) {
         // здесь будет ваш код удаления всех узлов по заданному значению
-        Node temp = find(_value);
-        if (temp == null) {
-            return;
-        }
-        Node node = this.head;
-        while (node != null) {
-            if (temp == null) {
-                return;
-            }
-            if (temp == node) {
-                head = temp.next;
-                temp = find(_value);
-            }
-            if (this.head == null) {
-                this.tail = null;
-                return;
-            }
-            if (temp == node.next) {
-                if (temp == this.tail) {
-                    node.next = temp.next;
-                    this.tail = null;
-                    return;
+        Node prev = null;
+        Node curr = this.head;
+        while (curr != null) {
+            if (curr.value == _value) {
+                if (prev != null) {
+                    remove(_value);
+                    if (curr.next == null) {
+                        this.tail = prev;
+                    }
+                } else {
+                    this.head = head.next;
+                    if (head == null) {
+                        tail = null;
+                    }
                 }
-                node.next = temp.next;
-                temp = find(_value);
             }
-            node = node.next;
+            prev = curr;
+            curr = curr.next;
         }
     }
 
