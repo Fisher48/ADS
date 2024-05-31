@@ -72,7 +72,6 @@ public class LinkedList {
 
     public void removeAll(int _value) {
         // здесь будет ваш код удаления всех узлов по заданному значению
-        // Некорректное удаление нескольких элементов разом при удалении из хвоста
         Node node1 = find(_value);
         while (node1 != null) {
             if (node1 == this.head) {
