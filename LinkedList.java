@@ -121,8 +121,8 @@ public class LinkedList {
         }
         while (node.next != null) {
             if (this.tail == _nodeAfter) {
-                this.tail = _nodeAfter;
                 _nodeAfter.next = _nodeToInsert;
+                this.tail = _nodeToInsert;
                 return;
             }
             if (node == _nodeAfter) {
