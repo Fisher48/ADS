@@ -86,7 +86,6 @@ public class LinkedList {
                     node.next = node1.next;
                     if (this.tail == node1) {
                         this.tail = node;
-
                     }
                 }
                 node = node.next;
@@ -117,6 +116,11 @@ public class LinkedList {
         // если _nodeAfter = null ,
         // добавьте новый элемент первым в списке
         Node node = this.head;
+        if (head == null && tail == null) {
+            this.head = _nodeToInsert;
+            this.tail = _nodeToInsert;
+            return;
+        }
         if (_nodeAfter == null) {
             head = _nodeToInsert;
             _nodeToInsert.next = node;
