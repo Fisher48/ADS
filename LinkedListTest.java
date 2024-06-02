@@ -96,7 +96,11 @@ public class LinkedListTest {
     @Test
     public void EmptyTest() {
         LinkedList s_list = new LinkedList();
+        LinkedList s2_list = new LinkedList();
+        s2_list.addInTail(new Node(1));
         assertEquals(false,s_list.remove(11));
         assertEquals(0,s_list.count());
+        List<Integer> emptyList = new ArrayList<>();
+        assertEquals(null,LinkedList.sum(s_list,s2_list));
     }
 }
