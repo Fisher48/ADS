@@ -97,6 +97,13 @@ public class LinkedList2Test {
     }
 
     @Test
+    public void insertInEmptyListTest() {
+        LinkedList2 s_list = new LinkedList2();
+        s_list.insertAfter(new Node(1),new Node(1000));
+        assertEquals(true,s_list.remove(1000));
+    }
+
+    @Test
     public void countTest() {
         LinkedList2 s_list = new LinkedList2();
         for (int i = 0; i < rand.nextInt(10) + 1; i++) {
