@@ -154,9 +154,10 @@ public class LinkedList2
             return;
         }
         if (_nodeAfter == null) {
+            this.head.prev = _nodeToInsert;
+            _nodeToInsert.next = this.head;
+            _nodeToInsert.prev = null;
             this.head = _nodeToInsert;
-            node.prev = this.head;
-            node.next = this.head.next;
             return;
         }
         if (_nodeAfter.next == null) {
