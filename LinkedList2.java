@@ -66,6 +66,11 @@ public class LinkedList2
         Node temp = find(_value);
         Node node = this.head;
         while (node != null) {
+            if (this.head == temp && temp == this.tail) {
+                tail = null;
+                head = null;
+                return true;
+            }
             if (temp == this.head) {
                 this.head = temp.next;
                 this.head.prev = null;
@@ -95,6 +100,11 @@ public class LinkedList2
         while (temp != null) {
             Node node = this.head;
             while (node != null) {
+                if (this.head == temp && temp == this.tail) {
+                    tail = null;
+                    head = null;
+                    break;
+                }
                 if (temp == this.head) {
                     this.head = temp.next;
                     this.head.prev = null;
