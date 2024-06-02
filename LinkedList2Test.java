@@ -81,14 +81,13 @@ public class LinkedList2Test {
     }
 
     @Test
-    public void insertTest() {
+    public void insertInTheEndOfYheListTest() {
         LinkedList2 s_list = new LinkedList2();
         Node n = new Node(140);
         s_list.addInTail(n);
         s_list.addInTail(new Node(1));
         s_list.addInTail(new Node(2));
         s_list.addInTail(new Node(3));
-        s_list.addInTail(n);
         s_list.addInTail(new Node(4));
         s_list.addInTail(new Node(5));
         s_list.addInTail(n);
@@ -97,9 +96,35 @@ public class LinkedList2Test {
     }
 
     @Test
+    public void insertInBeginningOfTheLisTest() {
+        LinkedList2 s_list = new LinkedList2();
+        s_list.addInTail(new Node(1));
+        s_list.addInTail(new Node(2));
+        s_list.addInTail(new Node(3));
+        s_list.addInTail(new Node(4));
+        s_list.insertAfter(null,new Node(1000));
+        assertEquals(true,s_list.remove(1000));
+    }
+
+
+    @Test
+    public void insertInMiddleWithNonEmptyListTest() {
+        LinkedList2 s_list = new LinkedList2();
+        Node n = new Node(140);
+        s_list.addInTail(new Node(1));
+        s_list.addInTail(new Node(2));
+        s_list.addInTail(new Node(3));
+        s_list.addInTail(n);
+        s_list.addInTail(new Node(4));
+        s_list.addInTail(new Node(5));
+        s_list.insertAfter(n,new Node(1000));
+        assertEquals(true,s_list.remove(1000));
+    }
+
+    @Test
     public void insertInEmptyListTest() {
         LinkedList2 s_list = new LinkedList2();
-        s_list.insertAfter(new Node(1),new Node(1000));
+        s_list.insertAfter(null,new Node(1000));
         assertEquals(true,s_list.remove(1000));
     }
 
