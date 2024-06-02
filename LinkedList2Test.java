@@ -95,7 +95,7 @@ public class LinkedList2Test {
     }
 
     @Test
-    public void insertInBeginningOfTheLisTest() {
+    public void insertInBeginningOfTheListTest() {
         LinkedList2 s_list = new LinkedList2();
         s_list.addInTail(new Node(1));
         s_list.addInTail(new Node(2));
