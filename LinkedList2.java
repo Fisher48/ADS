@@ -154,6 +154,19 @@ public class LinkedList2
             node.next = this.head.next;
             return;
         }
+        if (_nodeAfter.next == null) {
+            if (this.head == null) {
+                this.head = _nodeAfter;
+                _nodeAfter.next = _nodeToInsert;
+                _nodeToInsert.prev = _nodeAfter;
+                this.tail = _nodeToInsert;
+                return;
+            }
+            _nodeToInsert.prev = _nodeAfter;
+            this.tail = _nodeToInsert;
+            _nodeAfter.next = _nodeToInsert;
+            return;
+        }
         if (_nodeAfter == this.head) {
             _nodeToInsert.next = _nodeAfter.next;
             node.next = _nodeToInsert;
