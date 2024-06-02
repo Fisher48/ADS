@@ -84,7 +84,6 @@ public class LinkedList2Test {
     public void insertInTheEndOfYheListTest() {
         LinkedList2 s_list = new LinkedList2();
         Node n = new Node(140);
-        s_list.addInTail(n);
         s_list.addInTail(new Node(1));
         s_list.addInTail(new Node(2));
         s_list.addInTail(new Node(3));
