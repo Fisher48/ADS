@@ -19,6 +19,13 @@ public class LinkedList2Test {
     }
 
     @Test
+    public void removeOneElementTest() {
+        LinkedList2 s_list = new LinkedList2();
+        s_list.addInTail(new Node(100));
+        assertEquals(true,s_list.remove(100));
+    }
+
+    @Test
     public void removeAllTest() {
         LinkedList2 s_list = new LinkedList2();
         s_list.addInTail(new Node(1));
@@ -29,6 +36,15 @@ public class LinkedList2Test {
         s_list.addInTail(new Node(1234));
         s_list.addInTail(new Node(12));
         s_list.addInTail(new Node(1));
+        s_list.addInTail(new Node(1));
+        s_list.removeAll(1);
+        ArrayList<Node> nodes = new ArrayList<>();
+        assertEquals(nodes,s_list.findAll(1));
+    }
+
+    @Test
+    public void removeAllOneElementTest() {
+        LinkedList2 s_list = new LinkedList2();
         s_list.addInTail(new Node(1));
         s_list.removeAll(1);
         ArrayList<Node> nodes = new ArrayList<>();
