@@ -148,6 +148,11 @@ public class LinkedList2
     {
         // здесь будет ваш код вставки узла после заданного узла
         Node node = this.head;
+        if (head == null && tail == null) {
+            this.head = _nodeToInsert;
+            this.tail = _nodeToInsert;
+            return;
+        }
         if (_nodeAfter == null) {
             this.head = _nodeToInsert;
             node.prev = this.head;
@@ -155,13 +160,6 @@ public class LinkedList2
             return;
         }
         if (_nodeAfter.next == null) {
-            if (this.head == null) {
-                this.head = _nodeAfter;
-                _nodeAfter.next = _nodeToInsert;
-                _nodeToInsert.prev = _nodeAfter;
-                this.tail = _nodeToInsert;
-                return;
-            }
             _nodeToInsert.prev = _nodeAfter;
             this.tail = _nodeToInsert;
             _nodeAfter.next = _nodeToInsert;
