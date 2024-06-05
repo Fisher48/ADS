@@ -7,7 +7,7 @@ public class StackTest {
 
     @Test
     public void SampleTest() {
-        stack = new Stack<>(Object.class);
+        stack = new Stack<>();
         for (int i = 0; i < 9; i++) {
             stack.push(i);
             stack.push((char)('a' + i));
@@ -19,7 +19,7 @@ public class StackTest {
 
     @Test
     public void IntTest() {
-        Stack<Object> stack = new Stack<>(Object.class);
+        Stack<Object> stack = new Stack<>();
         for (int i = 0; i < 5; i++){
             stack.push(i);
         }
@@ -29,7 +29,7 @@ public class StackTest {
 
     @Test
     public void StringTest(){
-        Stack<Object> stack = new Stack<>(Object.class);
+        Stack<Object> stack = new Stack<>();
         for (int i = 0; i < 5; i++){
             stack.push("" + i);
         }
@@ -39,7 +39,7 @@ public class StackTest {
 
     @Test
     public void popWithDifferTypes() {
-        Stack<Object> stack = new Stack<>(Object.class);
+        Stack<Object> stack = new Stack<>();
         stack.push(1);
         stack.push("2");
         stack.push(3.14);
@@ -52,7 +52,7 @@ public class StackTest {
 
     @Test
     public void reverseStackTest() {
-        stack = new Stack<>(Object.class);
+        stack = new Stack<>();
         for (int i = 0; i < 9; i++){
             stack.push2(i);
         }
