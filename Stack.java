@@ -1,24 +1,25 @@
 import java.util.*;
 
-public class Stack<T> {
+public class Stack<T>
+{
 
     private Nodes<T> head;
     ArrayList<T> array;
     int count;
-    Class clazz;
 
-    public Stack(Class clz) {
-        // инициализация внутреннего хранилища стека
-        clazz = clz; // нужен для безопасного приведения типов
+    public Stack()
+    {
         this.array = new ArrayList<T>();
         this.count = 0;
     }
 
-    public int size() {
+    public int size()
+    {
         return array.size();
     }
 
-    public T pop() {
+    public T pop()
+    {
         if (!array.isEmpty()) {
             T temp = array.getLast();
             array.remove(--count);
@@ -27,12 +28,14 @@ public class Stack<T> {
         return null;  // если стек пустой
     }
 
-    public void push(T val) {
+    public void push(T val)
+    {
         array.add(val);
         count++;
     }
 
-    public T peek() {
+    public T peek()
+    {
         if (array.isEmpty()) {
             return null; // если стек пустой
         } else {
@@ -55,8 +58,10 @@ public class Stack<T> {
         return res;
     }
 
+
+
     public static boolean checkBrackets(String s) {
-        Stack stack = new Stack(Object.class);
+        Stack stack = new Stack();
         int balance = 0;
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '(') {
@@ -73,7 +78,7 @@ public class Stack<T> {
 
     public static int postFix(String s) {
         int result = 0; int a; int b;
-        Stack stack = new Stack(Object.class);
+        Stack stack = new Stack();
         for (int i = 0; i < s.length(); i++) {
             if (Character.isDigit(s.charAt(i))){
                 stack.push(Integer.parseInt(String.valueOf(s.charAt(i))));
@@ -110,6 +115,9 @@ public class Stack<T> {
     }
 }
 
+
+
+
 class Nodes<T> {
     T value;
     Nodes<T> next;
@@ -119,5 +127,6 @@ class Nodes<T> {
         next = null;
     }
 }
+
 
 
