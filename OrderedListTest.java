@@ -91,4 +91,12 @@ public class OrderedListTest {
             assertEquals(null,(orderedList.find(2)));
         }
 
+    @Test
+    public void stringTest(){
+        OrderedList<String> orderedList = new OrderedList<>(false);
+        for (int i = 0; i < 10; i++){
+            orderedList.add("" + i);
+        }
+        assertEquals(orderedList.find("1"), orderedList.find("1"));
+    }
 }
