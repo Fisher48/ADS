@@ -28,11 +28,13 @@ public class OrderedList<T>
 
     public int compare(T v1, T v2)
     {
-        if ((int) v1 < (int) v2) {
-            return -1;
-        }
-        if ((int) v1 > (int) v2) {
-            return +1;
+        if (v1 instanceof Number num1 && v2 instanceof Number num2) {
+            return Double.compare(num1.doubleValue(), num2.doubleValue());
+        } else if (v1 instanceof String num1 && v2 instanceof String num2) {
+            num1 = ((String) v1).trim();
+            num2 = ((String) v2).trim();
+            int cmp = num1.compareTo(num2);
+            return Integer.compare(cmp, 0);
         }
         return 0;
         // -1 если v1 < v2
