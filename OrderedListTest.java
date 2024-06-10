@@ -44,6 +44,9 @@ public class OrderedListTest {
             orderedList.delete(5);
             orderedList.delete(0);
             orderedList.delete(9);
+            assertEquals(null,orderedList.find(5));
+            assertEquals(null,orderedList.find(0));
+            assertEquals(null,orderedList.find(9));
         }
 
         @Test
@@ -55,6 +58,9 @@ public class OrderedListTest {
             orderedList.delete(5);
             orderedList.delete(1);
             orderedList.delete(10);
+            assertEquals(null,orderedList.find(5));
+            assertEquals(null,orderedList.find(1));
+            assertEquals(null,orderedList.find(10));
         }
 
         @Test
