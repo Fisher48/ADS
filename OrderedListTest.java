@@ -14,7 +14,6 @@ public class OrderedListTest {
                 orderedList.add(x);
             }
             assertEquals(10,orderedList.count());
-            System.out.println(orderedList.getAll());
         }
 
         @Test
@@ -24,7 +23,6 @@ public class OrderedListTest {
                 orderedList.add(rand.nextInt(20) + 1);
             }
             assertEquals(orderedList.find(1),orderedList.find(1));
-            System.out.println(orderedList.getAll());
         }
 
         @Test
@@ -35,7 +33,6 @@ public class OrderedListTest {
             }
             orderedList.clear(true);
             assertEquals(0,orderedList.count());
-            System.out.println(orderedList.getAll());
         }
 
         @Test
@@ -47,7 +44,6 @@ public class OrderedListTest {
             orderedList.delete(5);
             orderedList.delete(0);
             orderedList.delete(9);
-            System.out.println(orderedList.getAll());
         }
 
         @Test
@@ -59,7 +55,6 @@ public class OrderedListTest {
             orderedList.delete(5);
             orderedList.delete(1);
             orderedList.delete(10);
-            System.out.println(orderedList.getAll());
         }
 
         @Test
@@ -71,7 +66,6 @@ public class OrderedListTest {
             orderedList.add(4);orderedList.add(4);
             orderedList.find(11);
             orderedList.delete(4);
-            System.out.println(orderedList.getAll());
         }
 
         @Test
@@ -80,7 +74,7 @@ public class OrderedListTest {
             for (int i = 3; i < 10; i++) {
                 orderedList.add(i);
             }
-            orderedList.find(5);
+            assertEquals(null,(orderedList.find(12)));
         }
         @Test
         public void findElementExtraInAscending() {
@@ -88,7 +82,7 @@ public class OrderedListTest {
             for (int i = 3; i < 10; i++) {
                 orderedList.add(i);
             }
-            orderedList.find(2);
+            assertEquals(null,(orderedList.find(2)));
         }
 
 }
