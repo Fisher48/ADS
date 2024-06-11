@@ -27,7 +27,7 @@ public class HashTableTest {
     @Test
     public void numsTest() {
         HashTable hashTable = new HashTable(17,3);
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 1000; i++) {
             hashTable.put(rand.nextInt(15) + 1 + "");
         }
         assertEquals(-1,hashTable.find("50"));
@@ -66,6 +66,12 @@ public class HashTableTest {
         hashTable.put("slot");
         hashTable.put("hashtable");
         hashTable.put("check for find test");
+        hashTable.put("tests");
+        hashTable.put("words");
+        hashTable.put("in");
+        hashTable.put("1");
+        hashTable.put("2");
+        hashTable.put("3");
         assertEquals(-1,hashTable.put("hashtable"));
     }
 
