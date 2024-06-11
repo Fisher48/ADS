@@ -24,32 +24,25 @@ public class HashTable
     {
         // находит индекс пустого слота для значения, или -1
         int index = hashFun(value);
-        if (slots[index] == null) {
-            return index;
-        }
-        for (int i = 0; i < size; i += step) {
-            if (slots[i] == null) {
-                return i;
+        int startInd = index;
+        while (true) {
+            if (slots[index] == null) {
+                return index;
+            }
+            index = (index + step) % size;
+            if (index == startInd) {
+                return -1;
             }
         }
-        return -1;
     }
 
     public int put(String value)
     {
         // записываем значение по хэш-функции
-        int index = hashFun(value);
-        int x = 0;
-        if (!value.equals(slots[index]) && slots[index] == null) {
+        int index = seekSlot(value);
+        if (index != - 1) {
             slots[index] = value;
             return index;
-        }
-        if (value.equals(slots[index])) {
-            x = seekSlot(value);
-        }
-        if (x != -1) {
-            slots[x] = value;
-            return x;
         }
         // возвращается индекс слота или -1
         // если из-за коллизий элемент не удаётся разместить
@@ -60,7 +53,7 @@ public class HashTable
     {
         // находит индекс слота со значением, или -1
         int index = hashFun(value);
-        if (slots[hashFun(value)] == value) {
+        if (slots[index] == value) {
             return index;
         }
         for (int i = 0; i < size; i++) {
