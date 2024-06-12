@@ -29,6 +29,15 @@ public class PowerSetTest {
     }
 
     @Test
+    public void removeTest() {
+        PowerSet set = new PowerSet();
+        String s = "Test";
+        set.put(s);
+        assertEquals(true,set.remove(s));
+        assertEquals(false,set.remove(s));
+    }
+
+    @Test
     public void intersectionTest() {
         PowerSet set = new PowerSet();
         set.put("Test1"); set.put("Test2");
