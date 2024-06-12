@@ -51,6 +51,9 @@ public class PowerSet
     {
         // возвращает true если value удалено
         // иначе false
+        if (count == 0) {
+            return false;
+        }
         int index = hashFun(value);
         if (slots[index] != null) {
             slots[index] = null;
