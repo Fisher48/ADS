@@ -3,6 +3,7 @@ public class PowerSet
 
     public int length;
     public String[] slots;
+
     public int count;
 
 
