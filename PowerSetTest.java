@@ -13,6 +13,12 @@ public class PowerSetTest {
             set.put("a" + i);
         }
         assertEquals(100000,set.size());
+        assertEquals(true,set.remove("a89923"));
+        assertEquals(true,set.get("a99467"));
+        assertEquals(true,set.remove("a99467"));
+        assertEquals(false,set.get("a99467"));
+        assertEquals(false,set.remove("a89923"));
+        assertEquals(false,set.get("a89923"));
     }
 
     @Test
@@ -69,8 +75,8 @@ public class PowerSetTest {
         PowerSet set = new PowerSet();
         PowerSet set2 = new PowerSet();
         for (int i = 0, j = 100000; j > 50000; i++, j--) {
-            set.put(" " + i);
-            set2.put(" " + j);
+            set2.put(" " + i);
+            set.put(" " + j);
         }
         assertEquals(set.union(set2).size(),set.union(set2).size());
     }
