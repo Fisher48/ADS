@@ -71,12 +71,16 @@ public class PowerSet
     {
         // возвращает true если value имеется в множестве,
         int index = hashFun(value);
-        if (slots[index] == value) {
+        if (slots[index] != null) {
+            if (slots[index].equals(value)) {
             return true;
+        }
         } else {
             for (int i = 0; i < length; i++) {
-                if (slots[i] == value) {
-                    return true;
+                if (slots[i] != null) {
+                    if (slots[i].equals(value)) {
+                        return true;
+                    }
                 }
             }
         }
@@ -90,16 +94,20 @@ public class PowerSet
         // иначе false
         if (get(value)) {
             int index = hashFun(value);
-            if (slots[index] == value) {
-                slots[index] = null;
-                count--;
-                return true;
+            if (slots[index] != null) {
+                if (slots[index].equals(value)) {
+                    slots[index] = null;
+                    count--;
+                    return true;
+                }
             } else {
-                for (int i = 0; i < length; i++){
-                    if (slots[i] == value) {
-                        slots[i] = null;
-                        count--;
-                        return true;
+                for (int i = 0; i < length; i++) {
+                    if (slots[i] != null) {
+                        if (slots[i].equals(value)) {
+                            slots[i] = null;
+                            count--;
+                            return true;
+                        }
                     }
                 }
             }
