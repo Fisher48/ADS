@@ -90,7 +90,7 @@ public class PowerSet
         // иначе false
         if (get(value)) {
             int index = hashFun(value);
-            if (slots[index] != null) {
+            if (slots[index] == value) {
                 slots[index] = null;
                 count--;
                 return true;
