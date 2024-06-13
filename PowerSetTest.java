@@ -36,6 +36,7 @@ public class PowerSetTest {
         }
         assertEquals(true,set.get("19998"));
         assertEquals(false,set.get("49085"));
+        assertEquals(true,set.remove("19998"));
 
     }
 
