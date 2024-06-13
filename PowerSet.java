@@ -73,6 +73,12 @@ public class PowerSet
         int index = hashFun(value);
         if (slots[index] == value) {
             return true;
+        } else {
+            for (int i = 0; i < length; i++) {
+                if (slots[i] == value) {
+                    return true;
+                }
+            }
         }
         // иначе false
         return false;
