@@ -146,8 +146,18 @@ public class PowerSet
                     union.put(slot);
                 }
             }
+            for (String slot : set2.slots) {
+                if (slot != null) {
+                    union.put(slot);
+                }
+            }
         } else {
             for (String slot : set2.slots) {
+                if (slot != null) {
+                    union.put(slot);
+                }
+            }
+            for (String slot : slots) {
                 if (slot != null) {
                     union.put(slot);
                 }
