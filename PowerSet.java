@@ -15,6 +15,7 @@ public class PowerSet
         // ваша реализация хранилища
         length = 20000;
         slots = new String[length];
+        count = 0;
     }
 
     public int hashFun(String s) {
@@ -73,13 +74,13 @@ public class PowerSet
         int index = hashFun(value);
         if (slots[index] != null) {
             if (slots[index].equals(value)) {
-            return true;
-        }
-        } else {
-            for (int i = 0; i < length; i++) {
-                if (slots[i] != null) {
-                    if (slots[i].equals(value)) {
-                        return true;
+                return true;
+            } else {
+                for (int i = 0; i < length; i++) {
+                    if (slots[i] != null) {
+                        if (slots[i].equals(value)) {
+                            return true;
+                        }
                     }
                 }
             }
