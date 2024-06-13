@@ -1,7 +1,10 @@
+import java.lang.reflect.Array;
+
 public class PowerSet
 {
 
     public int length;
+
     public String[] slots;
 
     public int count;
@@ -24,16 +27,44 @@ public class PowerSet
         return count;
     }
 
+    public void growArr() {
+        slots = (String[]) Array.newInstance(String.class,length * 2);
+        String[] temp = new String[length];
+        System.arraycopy(slots,0,temp,0,length);
+        slots = temp;
+    }
+
 
     public void put(String value)
     {
         // всегда срабатывает
-        int index = hashFun(value);
-        if (slots[index] != null) {
+        if (get(value)) {
             return;
         }
-        slots[index] = value;
-        count++;
+        int index = seekSlot(value);
+        if (index != -1) {
+            slots[index] = value;
+            count++;
+        } else {
+            growArr();
+            put(value);
+        }
+    }
+
+    public int seekSlot(String value)
+    {
+        // находит индекс пустого слота для значения, или -1
+        int index = hashFun(value);
+        int startInd = index;
+        while (true) {
+            if (slots[index] == null) {
+                return index;
+            }
+            index = (index + 3) % length;
+            if (index == startInd) {
+                return -1;
+            }
+        }
     }
 
     public boolean get(String value)
