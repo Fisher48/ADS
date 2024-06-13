@@ -100,14 +100,14 @@ public class PowerSet
                     slots[index] = null;
                     count--;
                     return true;
-                }
-            } else {
-                for (int i = 0; i < length; i++) {
-                    if (slots[i] != null) {
-                        if (slots[i].equals(value)) {
-                            slots[i] = null;
-                            count--;
-                            return true;
+                } else {
+                    for (int i = 0; i < length; i++) {
+                        if (slots[i] != null) {
+                            if (slots[i].equals(value)) {
+                                slots[i] = null;
+                                count--;
+                                return true;
+                            }
                         }
                     }
                 }
