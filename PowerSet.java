@@ -120,9 +120,21 @@ public class PowerSet
     {
         // пересечение текущего множества и set2
         PowerSet inter = new PowerSet();
-        for (int i = 0; i < length; i++){
-            if (slots[i] != null && set2.get(slots[i])) {
-                inter.put(slots[i]);
+        if (set2.size() < size()) {
+            for (String element : set2.slots) {
+                if (element != null) {
+                    if (get(element)) {
+                        inter.put(element);
+                    }
+                }
+            }
+        } else {
+            for (String element : slots) {
+                if (element != null) {
+                    if (set2.get(element)) {
+                        inter.put(element);
+                    }
+                }
             }
         }
         return inter;
@@ -134,12 +146,17 @@ public class PowerSet
         // а возвращается объединение этих множеств (множество, в котором есть все элементы из каждого множества)
         // объединение текущего множества и set2
         PowerSet union = new PowerSet();
-        for (int i = 0; i < length; i++) {
-            if (slots[i] != null) {
-                union.put(slots[i]);
+        if (size() > set2.size()) {
+            for (String slot : slots) {
+                if (slot != null) {
+                    union.put(slot);
+                }
             }
-            if (set2.slots[i] != null) {
-                union.put(set2.slots[i]);
+        } else {
+            for (String slot : set2.slots) {
+                if (slot != null) {
+                    union.put(slot);
+                }
             }
         }
         return union;
@@ -148,16 +165,9 @@ public class PowerSet
     public PowerSet difference(PowerSet set2) {
         // разница текущего множества и set2
         PowerSet diff = new PowerSet();
-        for (int i = 0; i < length; i++) {
-            if (set2.slots[i] != null && slots[i] != null) {
-                if (slots[i].equals(set2.slots[i])) {
-                    remove(slots[i]);
-                }
-            }
-        }
-        for (int i = 0; i < length; i++) {
-            if (slots[i] != null) {
-                diff.put(slots[i]);
+        for (String slot : slots) {
+            if (slot != null && !set2.get(slot)) {
+                diff.put(slot);
             }
         }
         return diff;
@@ -168,21 +178,12 @@ public class PowerSet
         // возвращает true, если set2 есть
         // подмножество текущего множества,
         // иначе false
-        String s = "";
-        boolean check = false;
-        for (int i = 0; i < length; i++) {
-            if (set2.slots[i] != null) {
-                s = set2.slots[i];
-            }
-            for (int j = 0; j < length; j++) {
-                if (slots[j] != null) {
-                    if (s.equals(slots[j])) {
-                        check = true;
-                    }
-                }
+        for (String slot : set2.slots) {
+            if (slot != null && !get(slot)) {
+                return false;
             }
         }
-        return check;
+        return true;
     }
 }
 
