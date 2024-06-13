@@ -93,24 +93,18 @@ public class PowerSet
     {
         // возвращает true если value удалено
         // иначе false
-        if (get(value)) {
-            int index = hashFun(value);
-            if (slots[index] != null) {
-                if (slots[index].equals(value)) {
-                    slots[index] = null;
-                    count--;
-                    return true;
-                } else {
-                    for (int i = 0; i < length; i++) {
-                        if (slots[i] != null) {
-                            if (slots[i].equals(value)) {
-                                slots[i] = null;
-                                count--;
-                                return true;
-                            }
-                        }
-                    }
-                }
+        int index = hashFun(value);
+        if (slots[index] != null && slots[index].equals(value)) {
+            slots[index] = null;
+            count--;
+            return true;
+        }
+        for (int i = 0; i < length; i++) {
+            int probeIndex = (index + i) % length;
+            if (slots[probeIndex] != null && slots[probeIndex].equals(value)) {
+                slots[probeIndex] = null;
+                count--;
+                return true;
             }
         }
         return false;
