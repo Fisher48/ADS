@@ -91,8 +91,8 @@ public class PowerSetTest {
         PowerSet set = new PowerSet();
         PowerSet set2 = new PowerSet();
         for (int i = 0; i < 10; i++) {
-            set.put(" " + i);
-            set2.put(" " + i);
+            set.put("" + i);
+            set2.put("" + i);
         }
         set2.put("Test"); set2.put("Test2");
         assertEquals(2,set2.difference(set).size());
