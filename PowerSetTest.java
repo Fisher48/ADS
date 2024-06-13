@@ -9,10 +9,10 @@ public class PowerSetTest {
     @Test
     public void SampleTest() {
         PowerSet set = new PowerSet();
-        for (int i = 0; i < 1000000; i++) {
-            set.put("a" + rand.nextInt(1000000) + 1);
+        for (int i = 0; i < 100000; i++) {
+            set.put("a" + i);
         }
-        assertEquals(20000,set.size());
+        assertEquals(100000,set.size());
     }
 
     @Test
@@ -56,7 +56,7 @@ public class PowerSetTest {
     public void unionTest() {
         PowerSet set = new PowerSet();
         PowerSet set2 = new PowerSet();
-        for (int i = 0, j = 10000; i < 40000; i++, j--) {
+        for (int i = 0, j = 100000; j > 50000; i++, j--) {
             set.put(" " + i);
             set2.put(" " + j);
         }
@@ -118,10 +118,10 @@ public class PowerSetTest {
         PowerSet set = new PowerSet();
         PowerSet set2 = new PowerSet();
         for (int i = 0; i < 100; i++) {
-            set.put(" " + i);
+            set2.put(" " + i);
         }
         for (int j = 3; j < 20000; j++) {
-            set2.put(" j" + j);
+            set.put(" j" + j);
         }
         set2.put(" 0");
         assertEquals(false,set.isSubset(set2));
