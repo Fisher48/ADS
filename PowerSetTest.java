@@ -29,6 +29,17 @@ public class PowerSetTest {
     }
 
     @Test
+    public void getTest() {
+        PowerSet set = new PowerSet();
+        for (int i = 0; i < 20000; i++) {
+            set.put("" + i);
+        }
+        assertEquals(true,set.get("19998"));
+        assertEquals(false,set.get("49085"));
+
+    }
+
+    @Test
     public void removeTest() {
         PowerSet set = new PowerSet();
         String s = "Test";
