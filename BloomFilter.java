@@ -2,16 +2,13 @@ public class BloomFilter
 {
     public int filter_len;
 
-    public byte[] bitArr;
+    public int bitArr;
 
     public BloomFilter(int f_len)
     {
         filter_len = f_len;
         // создаём битовый массив длиной f_len ...
-        bitArr = new byte[f_len];
-        for (int i = 0; i < f_len; i++) {
-            bitArr[i] = 0;
-        }
+        bitArr = 0;
     }
 
     // хэш-функции
@@ -24,7 +21,7 @@ public class BloomFilter
             int code = str1.charAt(i);
             hash = (hash * 17 + code) % filter_len;
         }
-        return hash;
+        return Math.abs(hash);
     }
 
     public int hash2(String str1)
@@ -36,20 +33,20 @@ public class BloomFilter
             int code = str1.charAt(i);
             hash = (hash * 223 + code) % filter_len;
         }
-        return hash;
+        return Math.abs(hash);
     }
 
     public void add(String str1)
     {
         // добавляем строку str1 в фильтр
-        bitArr[hash1(str1)] |= 1;
-        bitArr[hash2(str1)] |= 1;
+        bitArr |= (1 << hash1(str1));
+        bitArr |= (1 << hash2(str1));
     }
 
     public boolean isValue(String str1)
     {
         // проверка, имеется ли строка str1 в фильтре
-        return bitArr[hash2(str1)] == 1 && bitArr[hash1(str1)] == 1;
+        return ((bitArr & (1 << hash1(str1))) != 0) && ((bitArr & (1 << hash2(str1))) != 0);
     }
 
 }
