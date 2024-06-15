@@ -6,7 +6,6 @@ class NativeCache<T>
     public String [] slots;
     public T [] values;
     public int [] hits;
-
     public int step;
 
     public NativeCache(int sz, Class clazz) {
